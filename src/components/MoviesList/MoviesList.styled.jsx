@@ -15,12 +15,9 @@ export const Item = styled.li`
   margin-right: 16px;
   max-width: 200px;
   &:hover {
-    box-shadow: rgba(26, 7, 22, 0.267) 0px 2px 10px 0px;
-    border-radius: 5px;
-    transition-duration: $transition-time;
-    transition-timing-function: $cubic;
     transform: scale(1.05);
-    cursor: pointer;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
+      1px 4px 6px rgba(0, 0, 0, 0.16);
   }
 `;
 
