@@ -21,6 +21,5 @@ export const ReviewsAuthor = styled.h4`
 
 export const ReviewsText = styled.p`
   font-size: 24px;
-  font-style: italic;
-  color: #ccc;
+  color: #2a2a2a;
 `;

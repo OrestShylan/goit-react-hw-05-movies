@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom';
 
 import { AddList, AddTitle } from './AddInform.styled';
-import { StyledLink } from '../NavBar/NavBar.styled';
+import { Link } from '../NavBar/NavBar.styled';
 
 export const AddInform = () => {
   const location = useLocation();
@@ -11,14 +11,14 @@ export const AddInform = () => {
       <AddTitle>Additional information</AddTitle>
       <AddList>
         <li>
-          <StyledLink to="cast" state={{ from: location?.state?.from }}>
+          <Link to="cast" state={{ from: location?.state?.from }}>
             Cast
-          </StyledLink>
+          </Link>
         </li>
         <li>
-          <StyledLink to="reviews" state={{ from: location?.state?.from }}>
+          <Link to="reviews" state={{ from: location?.state?.from }}>
             Reviews
-          </StyledLink>
+          </Link>
         </li>
       </AddList>
     </>

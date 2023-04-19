@@ -1,10 +1,16 @@
-import { Navigate, StyledLink } from './NavBar.styled';
+import { Navigate, Link, Logo } from './NavBar.styled';
 
 export const Navigation = () => {
   return (
     <Navigate>
-      <StyledLink to="/">Home</StyledLink>
-      <StyledLink to="movies">Movies</StyledLink>
+      <Logo>
+        <span role="img" aria-label="computer icon">
+          🎦
+        </span>{' '}
+        GoMovies Watch
+      </Logo>
+      <Link to="/">Home</Link>
+      <Link to="movies">Movies</Link>
     </Navigate>
   );
 };
