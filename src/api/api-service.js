@@ -35,3 +35,8 @@ export const fetchReviews = movieId => {
   );
   return response;
 };
+
+export const getPosterUrl = url =>
+  url
+    ? `https://image.tmdb.org/t/p/w500${url}`
+    : `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQq_wGA4J08YoSd2-aTz9OQrZeSA2fnZxEbOA&usqp=CAU`;

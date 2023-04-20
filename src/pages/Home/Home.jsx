@@ -6,17 +6,19 @@ import { Main, Title } from './Home.styled';
 
 export default function Home() {
   const [trendingMovies, setTrendingMovies] = useState([]);
-  const [isLoading, setIsLoading] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
     API.fetchTrendingMovies()
       .then(({ data }) => {
         setTrendingMovies(data.results);
-        setIsLoading(false);
       })
       .catch(error => {
         console.log(error);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }, []);
 

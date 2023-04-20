@@ -5,7 +5,7 @@ import {
   SpanMovie,
   TitleMovie,
 } from './MoviesItem.styled';
-
+import { getPosterUrl } from '../../api/api-service';
 export const MoviesItem = ({ movieDetails }) => {
   const { poster_path, original_title, overview, genres, vote_average } =
     movieDetails;
@@ -22,17 +22,9 @@ export const MoviesItem = ({ movieDetails }) => {
     }
   };
 
-  const poster = () => {
-    if (poster_path) {
-      return `https://image.tmdb.org/t/p/w500${poster_path}`;
-    } else {
-      return `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQq_wGA4J08YoSd2-aTz9OQrZeSA2fnZxEbOA&usqp=CAU`;
-    }
-  };
-
   return (
     <CartMovie>
-      <ImgMovie src={poster()} alt={original_title} />
+      <ImgMovie src={getPosterUrl(poster_path)} alt={original_title} />
       <div>
         <TitleMovie>{original_title}</TitleMovie>
         <DescMovie>

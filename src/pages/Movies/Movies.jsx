@@ -10,13 +10,11 @@ import { MoviesList } from 'components/MoviesList/MoviesList';
 import { Main } from '../Home/Home.styled';
 
 export default function Movies() {
-  const [, setSearchValue] = useState('');
   const [moviesByName, setMoviesByName] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [isLoading, setIsLoading] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const hendelSearchForm = searchValue => {
-    setSearchValue(searchValue);
+  const handleSearchForm = searchValue => {
     setSearchParams({ query: searchValue });
   };
 
@@ -26,21 +24,24 @@ export default function Movies() {
       return;
     }
 
-    setIsLoading(true);
+    if (!isLoading) {
+      setIsLoading(true);
 
-    API.fetchMoviesByName(value)
-      .then(({ data }) => {
-        setMoviesByName(data.results);
-        setIsLoading(false);
-      })
-      .catch(error => {
-        toast.error(error.message);
-      });
-  }, [searchParams]);
+      API.fetchMoviesByName(value)
+        .then(({ data }) => {
+          setMoviesByName(data.results);
+          setIsLoading(false);
+        })
+        .catch(error => {
+          setIsLoading(false);
+          toast.error(error.message);
+        });
+    }
+  }, [searchParams, isLoading]);
 
   return (
     <Main>
-      <SearchForm onSubmit={hendelSearchForm} />
+      <SearchForm onSubmit={handleSearchForm} />
       {isLoading && <Loader />}
 
       <MoviesList movies={moviesByName} />
